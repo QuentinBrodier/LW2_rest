@@ -29,13 +29,17 @@ public class STB implements Serializable
      
     @XmlElement
     private String email;
+    
+    @XmlElement
+    private Client client;
      
-    public STB(String titreProjet, String version, Date date, String description) {
+    public STB(String titreProjet, String version, Date date, String description,Client client) {
         super();
         this.titreProjet = titreProjet;
         this.version = version;
         this.date = date;
         this.description = description;
+        this.client = client;
     }
      
     public STB(){
@@ -47,6 +51,7 @@ public class STB implements Serializable
     @Override
     public String toString() {
         return "STB [titreProjet=" + titreProjet + ", version=" + version
-                + ", date=" + date + ", description=" + description + "]";
+                + ", date=" + date + ", description=" + description + "]"
+                + client;
     }
 }
