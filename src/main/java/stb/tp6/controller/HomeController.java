@@ -15,7 +15,7 @@ public class HomeController {
 		return "<p>Après avoir déployé le WAR, voici les URL accessibles : </p>"
 				+ "<p>/resume : Obtenir la liste des STB</p>"
 				+ "<p>/resume/{version} : Retourne une STB à la date du jour avec la version en paramètre dans l'URL</p>"
-				+ "<p>/insert : Retourne une STB passée dans le Body de la requète HTTP POST</p>";
+				+ "<p>/insert : Retourne une STB passée dans le Body de la requète HTTP POST !</p>";
 	}
 	
 }
