@@ -4,7 +4,7 @@
 
   <groupId>stb</groupId>
   <artifactId>tp6</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>1.0.0</version>
   <packaging>war</packaging>
   
   <build>
@@ -87,12 +87,6 @@
 		<groupId>org.springframework</groupId>
 		<artifactId>spring-webmvc</artifactId>
 		<version>${spring.version}</version>
-	</dependency>
-	
-    <dependency>
-		<groupId>javax.servlet</groupId>
-		<artifactId>javax.servlet-api</artifactId>
-		<version>3.1.0</version>
 	</dependency>
 
   </dependencies>
