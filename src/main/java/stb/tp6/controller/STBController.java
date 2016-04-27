@@ -86,6 +86,10 @@ public class STBController {
 			
 			// On valide l'XML par rapport au XSD
 			File xsdFile = new File("src/main/ressources/stb.xsd");
+			
+			if(xsdFile.isHidden())
+				System.out.println("Fichier vide !!");
+			
 			InputStream stream = new ByteArrayInputStream(sw.toString().getBytes(StandardCharsets.UTF_8));
 			Source xmlFile = new StreamSource(stream);
 			SchemaFactory schemaFactory = SchemaFactory
