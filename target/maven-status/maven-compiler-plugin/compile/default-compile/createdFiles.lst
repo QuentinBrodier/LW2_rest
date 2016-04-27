@@ -1,7 +1,11 @@
 stb/tp6/controller/STBController.class
+stb/tp6/model/Equipe.class
 stb/tp6/config/AppConfig.class
 stb/tp6/controller/HomeController.class
 stb/tp6/model/STBList.class
+stb/tp6/model/ExigenceFonctionnelle.class
 stb/tp6/ServletInitializer.class
 stb/tp6/App.class
+stb/tp6/model/Client.class
+stb/tp6/model/Fonctionnalite.class
 stb/tp6/model/STB.class

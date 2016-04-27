@@ -1,5 +1,6 @@
 package stb.tp6.controller;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -11,6 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
 
 import stb.tp6.model.STB;
 import stb.tp6.model.STBList;
@@ -56,6 +60,21 @@ public class STBController {
 	@RequestMapping(value="/insert",method = RequestMethod.POST)
 	@ResponseBody 
 	public ResponseEntity<STB> addSTB(@RequestBody STB stb) {
+		
+		try {
+
+			File file = new File("file.xml");
+			JAXBContext jaxbContext = JAXBContext.newInstance(STB.class);
+			Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
+
+			// output pretty printed
+			jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+
+			jaxbMarshaller.marshal(stb, file);
+
+	      } catch (JAXBException e) {
+		e.printStackTrace();
+	      }
 		
 		stbList.getSTBs().add(stb);
 		ResponseEntity re = new ResponseEntity<STB>(stb, HttpStatus.OK);
