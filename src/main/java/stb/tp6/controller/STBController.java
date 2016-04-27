@@ -20,11 +20,10 @@ import stb.tp6.model.Equipe;
 @RestController
 public class STBController {
 
-	@RequestMapping(value = "/resume")
-    public STBList getAllSTB() 
-    {
+	private STBList stbList = new STBList();
+	
+	public STBController(){
 		
-		STBList stbList = new STBList();
 		Client c1 = new Client("Entité 1","Brodier Quentin",76100);
 		Client c2 = new Client("Entité 2","Coulon Matthieu",76000);
 		
@@ -36,7 +35,11 @@ public class STBController {
 		stbList.getSTBs().add(new STB("STB 0.1 ","0.1","20/04/2016","La premiere version !!",c1,alE));
 		stbList.getSTBs().add(new STB("STB 0.2 ","0.2","21/04/2016","La deuxième version !!",c1,alE));
 		stbList.getSTBs().add(new STB("STB 1.0 ","1.0","21/04/2016","Version finale !!",c2,alE));
-         
+	}
+	
+	@RequestMapping(value = "/resume")
+    public STBList getAllSTB() 
+    {   
         return stbList;
     }
 	
@@ -46,11 +49,15 @@ public class STBController {
 		return new ResponseEntity<STB>(stb, HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/resume/{version}")
-    public ResponseEntity<STB> getSTBByVersion (@PathVariable("version") String version) 
+	@RequestMapping(value = "/resume/{id}")
+    public ResponseEntity<STB> getSTBByVersion (@PathVariable("version") int id) 
     {   
-        STB stb = new STB("STB " + version,version,"21/04/2016","Super description !!",new Client("Entité test","Quentin Test",76110),null);
-        return new ResponseEntity<STB>(stb, HttpStatus.OK);
+		for(STB stb : stbList.getSTBs()) {
+            if (stb.getId() == id) {
+            	return new ResponseEntity<STB>(stb, HttpStatus.OK);
+            }
+        }
+		return new ResponseEntity<STB>(HttpStatus.NOT_FOUND);
     }
 	
 }
