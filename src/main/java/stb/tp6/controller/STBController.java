@@ -59,7 +59,7 @@ public class STBController {
             	return new ResponseEntity<STB>(stb, HttpStatus.OK);
             }
         }
-		return new ResponseEntity<STB>(stbList.getSTBs().get(0),HttpStatus.OK);
+		return new ResponseEntity<STB>(HttpStatus.NOT_FOUND);
     }
 	
 }
