@@ -1,6 +1,7 @@
 package stb.tp6.controller;
 
 import java.io.File;
+import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -63,14 +64,17 @@ public class STBController {
 		
 		try {
 
-			File file = new File("file.xml");
+			StringWriter sw = new StringWriter();
 			JAXBContext jaxbContext = JAXBContext.newInstance(STB.class);
 			Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
 
 			// output pretty printed
 			jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 
-			jaxbMarshaller.marshal(stb, file);
+			jaxbMarshaller.marshal(stb, sw);
+			String s = sw.toString();
+			
+			System.out.println(s);
 
 	      } catch (JAXBException e) {
 		e.printStackTrace();
