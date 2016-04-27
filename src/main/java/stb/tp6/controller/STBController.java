@@ -45,6 +45,8 @@ public class STBController {
 		stbList.getSTBs().add(new STB("STB 0.2 ","0.2","21/04/2016","La deuxième version !!",c1,alE,alF));
 		stbList.getSTBs().add(new STB("STB 1.0 ","1.0","21/04/2016","Version finale !!",c1,alE,alF));
 		
+		System.out.println("TEST PRINT OK");
+		
 	}
 	
 	@RequestMapping(value = "/resume")
