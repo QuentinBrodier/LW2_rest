@@ -57,10 +57,8 @@ public class STBController {
 	@ResponseBody 
 	public ResponseEntity<STB> addSTB(@RequestBody STB stb) {
 		
+		stbList.getSTBs().add(stb);
 		ResponseEntity re = new ResponseEntity<STB>(stb, HttpStatus.OK);
-		
-		System.out.println(re.getBody());
-		
 		return re;
 	}
 	
