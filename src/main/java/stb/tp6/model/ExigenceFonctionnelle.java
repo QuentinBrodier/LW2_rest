@@ -10,7 +10,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class ExigenceFonctionnelle {
 
     @XmlElement
-    private String identifiant;
+    private int identifiant;
 
     @XmlElement
     private String description;
@@ -18,7 +18,7 @@ public class ExigenceFonctionnelle {
     @XmlElement
     private int priorite;
     
-    public ExigenceFonctionnelle(String identifiant, String description, int priorite){
+    public ExigenceFonctionnelle(int identifiant, String description, int priorite){
     	this.identifiant = identifiant;
     	this.description = description;
     	this.priorite = priorite;
@@ -28,11 +28,11 @@ public class ExigenceFonctionnelle {
     	
     }
 
-    public String getIdentifiant() {
+    public int getIdentifiant() {
         return identifiant;
     }
 
-    public void setIdentifiant(String identifiant) {
+    public void setIdentifiant(int identifiant) {
         this.identifiant = identifiant;
     }
 

@@ -39,9 +39,12 @@ public class STB implements Serializable
     
     @XmlElement(name="equipe")
     private List<Equipe> equipeList;
+    
+    @XmlElement(name="fonctionnalite")
+    private List<Fonctionnalite> fonctionnaliteList;
      
     public STB(String titreProjet, String version, String date, String description,Client client,
-    		ArrayList<Equipe> equipeList) {
+    		List<Equipe> equipeList, List<Fonctionnalite> fonctionnaliteList) {
         super();
         this.id = STB_ID++;
         this.titreProjet = titreProjet;
@@ -50,10 +53,12 @@ public class STB implements Serializable
         this.description = description;
         this.client = client;
         this.equipeList = equipeList;
+        this.fonctionnaliteList = fonctionnaliteList;
     }
      
     public STB(){
     	this.equipeList = new ArrayList<Equipe>();
+    	this.fonctionnaliteList = new ArrayList<Fonctionnalite>();
     	this.id = STB_ID++;
     }
 
@@ -120,6 +125,14 @@ public class STB implements Serializable
 
 	public void setEquipeList(List<Equipe> equipeList) {
 		this.equipeList = equipeList;
+	}
+	
+	public List<Fonctionnalite> getFonctionnaliteList() {
+		return fonctionnaliteList;
+	}
+
+	public void setFonctionnaliteList(List<Fonctionnalite> fonctionnaliteList) {
+		this.fonctionnaliteList = fonctionnaliteList;
 	}
 
 	

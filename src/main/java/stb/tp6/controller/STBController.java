@@ -16,6 +16,8 @@ import stb.tp6.model.STB;
 import stb.tp6.model.STBList;
 import stb.tp6.model.Client;
 import stb.tp6.model.Equipe;
+import stb.tp6.model.ExigenceFonctionnelle;
+import stb.tp6.model.Fonctionnalite;
 
 @RestController
 public class STBController {
@@ -25,16 +27,23 @@ public class STBController {
 	public STBController(){
 		
 		Client c1 = new Client("Entité 1","Brodier Quentin",76100);
-		Client c2 = new Client("Entité 2","Coulon Matthieu",76000);
-		
+	
 		Equipe e1 = new Equipe("Jean","Jaques",true);
-		
 		ArrayList<Equipe> alE = new ArrayList<Equipe>();
 		alE.add(e1);
+		
+		ArrayList<Fonctionnalite> alF = new ArrayList<Fonctionnalite>();
+		ArrayList<ExigenceFonctionnelle> alEF = new ArrayList<ExigenceFonctionnelle>();
+		ExigenceFonctionnelle ee1 = new ExigenceFonctionnelle(1, "Créer un sujet", 1);
+		ExigenceFonctionnelle ee2 = new ExigenceFonctionnelle(2, "Répondre à un sujet", 1);
+		alEF.add(ee1);
+		alEF.add(ee2);
+		Fonctionnalite f1 = new Fonctionnalite("Forum", 1, alEF);
+		alF.add(f1);
         
-		stbList.getSTBs().add(new STB("STB 0.1 ","0.1","20/04/2016","La premiere version !!",c1,alE));
-		stbList.getSTBs().add(new STB("STB 0.2 ","0.2","21/04/2016","La deuxième version !!",c1,alE));
-		stbList.getSTBs().add(new STB("STB 1.0 ","1.0","21/04/2016","Version finale !!",c2,alE));
+		stbList.getSTBs().add(new STB("STB 0.1 ","0.1","20/04/2016","La premiere version !!",c1,alE,alF));
+		stbList.getSTBs().add(new STB("STB 0.2 ","0.2","21/04/2016","La deuxième version !!",c1,alE,alF));
+		stbList.getSTBs().add(new STB("STB 1.0 ","1.0","21/04/2016","Version finale !!",c1,alE,alF));
 		
 	}
 	
