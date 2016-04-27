@@ -87,8 +87,7 @@ public class STBController {
 			// On valide l'XML par rapport au XSD
 			File xsdFile = new File("src/main/ressources/stb.xsd");
 			
-			if(xsdFile == null)
-				System.out.println("Fichier vide !!");
+			System.out.println(xsdFile.toString());
 			
 			InputStream stream = new ByteArrayInputStream(sw.toString().getBytes(StandardCharsets.UTF_8));
 			Source xmlFile = new StreamSource(stream);
