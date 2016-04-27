@@ -1,7 +1,10 @@
 package stb.tp6.controller;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.InputStream;
 import java.io.StringWriter;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -13,9 +16,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.xml.sax.SAXException;
+
+import javax.xml.XMLConstants;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
+import javax.xml.transform.Source;
+import javax.xml.transform.stream.StreamSource;
+import javax.xml.validation.Schema;
+import javax.xml.validation.SchemaFactory;
+import javax.xml.validation.Validator;
 
 import stb.tp6.model.STB;
 import stb.tp6.model.STBList;
@@ -63,22 +74,36 @@ public class STBController {
 	public ResponseEntity<STB> addSTB(@RequestBody STB stb) {
 		
 		try {
-
+			
+			// On sérialise notre objet STB en XML
 			StringWriter sw = new StringWriter();
 			JAXBContext jaxbContext = JAXBContext.newInstance(STB.class);
 			Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
-
-			// output pretty printed
 			jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-
 			jaxbMarshaller.marshal(stb, sw);
-			String s = sw.toString();
 			
-			System.out.println(s);
+			// On valide l'XML par rapport au XSD
+			File xsdFile = new File("src/main/ressources/stb.xsd");
+			InputStream stream = new ByteArrayInputStream(sw.toString().getBytes(StandardCharsets.UTF_8));
+			Source xmlFile = new StreamSource(stream);
+			SchemaFactory schemaFactory = SchemaFactory
+			    .newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+			Schema schema = schemaFactory.newSchema(xsdFile);
+			Validator validator = schema.newValidator();
+			
+			try {
+			  validator.validate(xmlFile);
+			  System.out.println("XML valid");
+			} catch (SAXException e) {
+			  System.out.println(xmlFile.getSystemId() + " is NOT valid");
+			  System.out.println("Reason: " + e.getLocalizedMessage());
+			}
 
-	      } catch (JAXBException e) {
-		e.printStackTrace();
-	      }
+	    } catch (JAXBException e) {
+	    	e.printStackTrace();
+	    } catch (Exception e){
+	    	e.printStackTrace();
+	    }
 		
 		stbList.getSTBs().add(stb);
 		ResponseEntity re = new ResponseEntity<STB>(stb, HttpStatus.OK);
