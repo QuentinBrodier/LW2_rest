@@ -45,8 +45,6 @@ public class STBController {
 		stbList.getSTBs().add(new STB("STB 0.2 ","0.2","21/04/2016","La deuxième version !!",c1,alE,alF));
 		stbList.getSTBs().add(new STB("STB 1.0 ","1.0","21/04/2016","Version finale !!",c1,alE,alF));
 		
-		System.out.println("TEST PRINT OK");
-		
 	}
 	
 	@RequestMapping(value = "/resume")
@@ -58,7 +56,12 @@ public class STBController {
 	@RequestMapping(value="/insert",method = RequestMethod.POST)
 	@ResponseBody 
 	public ResponseEntity<STB> addSTB(@RequestBody STB stb) {
-		return new ResponseEntity<STB>(stb, HttpStatus.OK);
+		
+		ResponseEntity re = new ResponseEntity<STB>(stb, HttpStatus.OK);
+		
+		System.out.println(re.getBody());
+		
+		return re;
 	}
 	
 	@RequestMapping(value = "/resume/{id}")
