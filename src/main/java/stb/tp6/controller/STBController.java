@@ -23,7 +23,7 @@ public class STBController {
 	private STBList stbList = new STBList();
 	
 	public STBController(){
-		/*
+		
 		Client c1 = new Client("Entité 1","Brodier Quentin",76100);
 		Client c2 = new Client("Entité 2","Coulon Matthieu",76000);
 		
@@ -35,7 +35,7 @@ public class STBController {
 		stbList.getSTBs().add(new STB("STB 0.1 ","0.1","20/04/2016","La premiere version !!",c1,alE));
 		stbList.getSTBs().add(new STB("STB 0.2 ","0.2","21/04/2016","La deuxième version !!",c1,alE));
 		stbList.getSTBs().add(new STB("STB 1.0 ","1.0","21/04/2016","Version finale !!",c2,alE));
-		*/
+		
 	}
 	
 	@RequestMapping(value = "/resume")
@@ -59,7 +59,7 @@ public class STBController {
             	return new ResponseEntity<STB>(stb, HttpStatus.OK);
             }
         }
-		return new ResponseEntity<STB>(HttpStatus.NOT_FOUND);
+		return new ResponseEntity<STB>(stbList.getSTBs().get(0),HttpStatus.OK);
     }
 	
 }
