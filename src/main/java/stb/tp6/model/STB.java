@@ -37,12 +37,13 @@ public class STB implements Serializable
     @XmlElement
     private Client client;
     
-    @XmlElement
+    @XmlElement(name="equipe")
     private List<Equipe> equipeList;
      
     public STB(String titreProjet, String version, String date, String description,Client client,
     		ArrayList<Equipe> equipeList) {
         super();
+        this.id = STB_ID++;
         this.titreProjet = titreProjet;
         this.version = version;
         this.date = date;
