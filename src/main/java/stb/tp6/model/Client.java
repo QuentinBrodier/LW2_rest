@@ -1,7 +1,5 @@
 package stb.tp6.model;
 
-import java.util.Date;
-
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -32,11 +30,28 @@ public class Client {
     }
  
     //Setters and Getters
- 
-    @Override
-    public String toString() {
-        return "Client [entite=" + entite + ", contact=" + contact
-                + ", codePostal=" + codePostal + "]";
+    public String getEntite(){
+    	return entite;
+    }
+    
+    public void setEntite(String entite){
+    	this.entite = entite;
+    }
+    
+    public String getContact(){
+    	return this.contact;
+    }
+    
+    public void setContact(String contact){
+    	this.contact = contact;
+    }
+    
+    public int getCodePostal() {
+        return codePostal;
+    }
+
+    public void setCodePostal(int codePostal) {
+        this.codePostal = codePostal;
     }
 
 }
