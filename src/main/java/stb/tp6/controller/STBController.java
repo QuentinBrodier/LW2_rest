@@ -50,6 +50,7 @@ public class STBController {
 	}
 	
 	@RequestMapping(value = "/resume/{id}")
+	@ResponseBody
     public STB getSTBByVersion (@PathVariable("version") int id) 
     {   
 		for(STB stb : stbList.getSTBs()) {
