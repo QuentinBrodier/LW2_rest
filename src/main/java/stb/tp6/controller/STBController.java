@@ -51,14 +51,15 @@ public class STBController {
 	}
 	
 	@RequestMapping(value = "/resume/{id}")
-    public STB getSTBByVersion (@PathVariable("version") int id) 
+	@ResponseBody
+    public ResponseEntity<STB> getSTBByVersion (@PathVariable("id") int id) 
     {   
 		for(STB stb : stbList.getSTBs()) {
             if (stb.getId() == id) {
-            	return stb;
+            	return new ResponseEntity<STB>(stb, HttpStatus.OK);
             }
         }
-		return null;
+		return new ResponseEntity<STB>(HttpStatus.NOT_FOUND);
     }
 	
 }
