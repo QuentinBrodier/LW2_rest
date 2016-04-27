@@ -24,6 +24,10 @@ public class Equipe {
     	this.gender = gender;
     }
 
+    public Equipe(){
+    	
+    }
+    
     //Setters and Getters
     public String getNom() {
         return nom;
