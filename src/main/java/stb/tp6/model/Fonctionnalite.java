@@ -3,6 +3,7 @@ package stb.tp6.model;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +15,7 @@ public class Fonctionnalite {
     @XmlElement
     private String description;
     
-    @XmlElement
+    @XmlAttribute
     private int priorite;
 
     @XmlElement(name = "ef")

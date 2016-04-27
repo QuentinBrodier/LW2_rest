@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://univ.fr/stb" xmlns="http://univ.fr/stb">
+
+	<xs:element name="stb" type="stbType"/>
+
+	<xs:element name="id" type="xs:int"/>
+	<xs:element name="titreProjet" type="xs:string"/>
+	<xs:element name="version" type="xs:string" default="0.1"/>
+	<xs:element name="date" type="xs:dateTime"/>
+	<xs:element name="description" type="xs:string"/>
+	<xs:element name="client" type="clientType"/>
+	<xs:element name="entite" type="xs:string"/>
+	<xs:element name="contact" type="xs:string" default="BRODIER Quentin"/>
+	<xs:element name="codePostal" type="xs:int"/>
+	<xs:element name="equipe" type="equipeType"/>
+	<xs:element name="nom" type="xs:string"/>
+	<xs:element name="prenom" type="xs:string"/>
+	<xs:element name="gender" type="xs:boolean" default="true"/>
+	<xs:element name="fonctionnalite" type="fonctionnaliteType"/>
+	<xs:element name="ef" type="efType"/>
+	<xs:element name="identifiant" type="xs:int"/>
+	
+	<xs:element name="commentaire" type="xs:string"/>
+	
+	
+	<!-- TYPE : STB -->
+	<xs:complexType name="stbType">
+		<xs:sequence>
+			<xs:element ref="id"/>
+			<xs:element ref="titreProjet"/>
+			<xs:element ref="version"/>
+			<xs:element ref="date"/>
+			<xs:element ref="description"/>
+			<xs:element ref="client" minOccurs="1" maxOccurs="1"/>
+			<xs:element ref="equipe" minOccurs="2" maxOccurs="7"/>
+			<xs:element ref="fonctionnalite" minOccurs="1" maxOccurs="unbounded"/>
+			<xs:element ref="commentaire" minOccurs="0" maxOccurs="1"/>	
+		</xs:sequence>
+	</xs:complexType>
+	
+	<!-- TYPE : CLIENT -->
+	<xs:complexType name="clientType">
+		<xs:sequence>
+			<xs:element ref="entite"/>
+			<xs:element ref="contact"/>
+			<xs:element ref="codePostal"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<!-- TYPE : EQUIPE -->
+	<xs:complexType name="equipeType">
+		<xs:sequence>
+			<xs:element ref="gender"/>
+			<xs:element ref="nom"/>
+			<xs:element ref="prenom"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<!-- TYPE : FONCTIONNALITE -->	
+	<xs:complexType name="fonctionnaliteType">
+		<xs:sequence>
+			<xs:element ref="description"/>
+			<xs:element ref="ef" minOccurs="2" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="priorite" type="prioriteType" use="required"/>
+	</xs:complexType>
+
+	<!-- TYPE : EXIGENCES FONCTIONNELLES -->
+	<xs:complexType name="efType">
+		<xs:sequence>
+			<xs:element ref="identifiant"/>
+			<xs:element ref="description"/>
+		</xs:sequence>
+		<xs:attribute name="priorite" type="prioriteType" use="required"/>
+	</xs:complexType>
+	
+	<!-- TYPE : PRIORITE  -->
+	 <xs:simpleType name="prioriteType">
+        <xs:restriction base="xs:int">
+            <xs:pattern value="[1-9]|10" />
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>
