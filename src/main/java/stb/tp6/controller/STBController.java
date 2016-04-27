@@ -73,6 +73,8 @@ public class STBController {
 	@ResponseBody 
 	public ResponseEntity<STB> addSTB(@RequestBody STB stb) {
 		
+		System.out.println("Coucou");
+		
 		try {
 			
 			// On sérialise notre objet STB en XML
@@ -90,6 +92,8 @@ public class STBController {
 			    .newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
 			Schema schema = schemaFactory.newSchema(xsdFile);
 			Validator validator = schema.newValidator();
+			
+			System.out.println("On passe ici");
 			
 			try {
 			  validator.validate(xmlFile);
