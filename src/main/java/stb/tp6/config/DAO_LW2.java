@@ -27,8 +27,9 @@ public class DAO_LW2 {
 		collection = jongo.getCollection("lw2collection");
 	}
 	
-	public void insert(Object o){
-		collection.save(o);
+	public void insert(STB s){
+		s.setId(434);
+		collection.save(s);
 	}
 	
 	public int nextId(){
