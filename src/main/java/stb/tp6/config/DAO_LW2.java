@@ -27,11 +27,16 @@ public class DAO_LW2 {
 		collection = jongo.getCollection("lw2collection");
 	}
 	
-	public void insert(STB s){
-		s.setId(434);
-		//STB stb = collection.findOne().orderBy("{id}").as(STB.class);
-		//System.out.println("/#/#/#/#/#/#/#/#/# : " + stb.getId());
-		collection.save(s);
+	public void insert(STB stb){
+		MongoCursor<STB> stbCursor = collection.find().as(STB.class);
+		int nextId = 0;
+		while (stbCursor.hasNext()) {
+			STB s = stbCursor.next();
+			if(s.getId()>nextId)
+				nextId = s.getId();
+		}
+		stb.setId(nextId+1);
+		collection.save(stb);
 	}
 	
 	
