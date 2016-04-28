@@ -45,7 +45,7 @@ public class STBController {
 		
 		Client c1 = new Client("Entité 1","Brodier Quentin",76100);
 	
-		Equipe e1 = new Equipe("Jean","Jaques",true);
+		Equipe e1 = new Equipe(true,"Jean","Jaques");
 		ArrayList<Equipe> alE = new ArrayList<Equipe>();
 		alE.add(e1);
 		
