@@ -9,6 +9,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Date;
 
+import org.jongo.Jongo;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +19,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.xml.sax.SAXException;
+
+import com.mongodb.Mongo;
+import com.mongodb.MongoClient;
+import com.mongodb.MongoClientURI;
+import com.mongodb.MongoURI;
+import com.mongodb.client.MongoCollection;
 
 import javax.xml.XMLConstants;
 import javax.xml.bind.JAXBContext;
@@ -35,6 +42,8 @@ import stb.tp6.model.Client;
 import stb.tp6.model.Equipe;
 import stb.tp6.model.ExigenceFonctionnelle;
 import stb.tp6.model.Fonctionnalite;
+
+
 
 @RestController
 public class STBController {
@@ -88,7 +97,17 @@ public class STBController {
 			boolean isValid = validateXMLSchema("src/main/ressources/stb.xsd", stream);
 			
 			if(isValid){
-				System.out.println("XML Valide !!");
+				
+				// Persistence dans la BD
+				String textUri = "mongodb://lw2user:lw2user@ds041484.mlab.com:41484/lw2projet";
+				MongoClientURI mongoClientURI = new MongoClientURI(textUri);
+				MongoClient mongoClient = new MongoClient(mongoClientURI);
+				Jongo jongo = new Jongo(mongoClient.getDB(mongoClientURI.getDatabase()));
+				MongoCollection collection = (MongoCollection) jongo.getCollection("myCollection");
+				collection.insertOne(stb);
+				mongoClient.close();
+				
+				
 			}else{
 				System.out.println("XML Non Valide !!");
 			}
