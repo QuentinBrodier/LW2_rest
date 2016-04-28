@@ -103,7 +103,7 @@ public class STBController {
 				MongoClientURI mongoClientURI = new MongoClientURI(textUri);
 				MongoClient mongoClient = new MongoClient(mongoClientURI);
 				Jongo jongo = new Jongo(mongoClient.getDB(mongoClientURI.getDatabase()));
-				MongoCollection collection = (MongoCollection) jongo.getCollection("myCollection");
+				MongoCollection collection = (MongoCollection) jongo.getCollection("lw2collection");
 				collection.insertOne(stb);
 				mongoClient.close();
 				
