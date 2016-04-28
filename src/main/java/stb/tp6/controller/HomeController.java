@@ -15,7 +15,7 @@ public class HomeController {
 	@ResponseBody
 	public String home() {
 		DAO_LW2 db = new DAO_LW2();
-		int nbStbs = 0;
+		int nbStbs = db.countSTB();
 		return "<p>Quentin Brodier & Matthieu Coulon :</p>"
 				+ "<p>/resume : Obtenir la liste des STB (versions allégées)</p>"
 				+ "<p>/resume/{id} : Retourne une STB correspond à l'id (version détaillée)</p>"
