@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import org.jongo.Jongo;
+import org.jongo.MongoCollection;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,7 +25,6 @@ import com.mongodb.Mongo;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
 import com.mongodb.MongoURI;
-import com.mongodb.client.MongoCollection;
 
 import javax.xml.XMLConstants;
 import javax.xml.bind.JAXBContext;
@@ -103,8 +103,8 @@ public class STBController {
 				MongoClientURI mongoClientURI = new MongoClientURI(textUri);
 				MongoClient mongoClient = new MongoClient(mongoClientURI);
 				Jongo jongo = new Jongo(mongoClient.getDB(mongoClientURI.getDatabase()));
-				MongoCollection collection = (MongoCollection) jongo.getCollection("lw2collection");
-				collection.insertOne(stb);
+				MongoCollection collection = jongo.getCollection("lw2collection");
+				collection.save(stb);
 				mongoClient.close();
 				
 				
