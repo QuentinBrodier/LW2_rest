@@ -2,6 +2,7 @@ package stb.tp6.controller;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringWriter;
 import java.nio.charset.StandardCharsets;
@@ -73,8 +74,6 @@ public class STBController {
 	@ResponseBody 
 	public ResponseEntity<STB> addSTB(@RequestBody STB stb) {
 		
-		System.out.println("Coucou");
-		
 		try {
 			
 			// On sérialise notre objet STB en XML
@@ -85,26 +84,9 @@ public class STBController {
 			jaxbMarshaller.marshal(stb, sw);
 			
 			// On valide l'XML par rapport au XSD
-			File xsdFile = new File("src/main/ressources/stb.xsd");
-			
-			System.out.println(xsdFile.toString());
-			
 			InputStream stream = new ByteArrayInputStream(sw.toString().getBytes(StandardCharsets.UTF_8));
-			Source xmlFile = new StreamSource(stream);
-			SchemaFactory schemaFactory = SchemaFactory
-			    .newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
-			Schema schema = schemaFactory.newSchema(xsdFile);
-			Validator validator = schema.newValidator();
+			validateXMLSchema("src/main/ressources/stb.xsd", stream);
 			
-			System.out.println("On passe ici");
-			
-			try {
-			  validator.validate(xmlFile);
-			  System.out.println("XML valid");
-			} catch (SAXException e) {
-			  System.out.println(xmlFile.getSystemId() + " is NOT valid");
-			  System.out.println("Reason: " + e.getLocalizedMessage());
-			}
 
 	    } catch (JAXBException e) {
 	    	e.printStackTrace();
@@ -127,6 +109,24 @@ public class STBController {
             }
         }
 		return new ResponseEntity<STB>(HttpStatus.NOT_FOUND);
+    }
+	
+	public static boolean validateXMLSchema(String xsdPath, InputStream stream){
+        
+		try {
+            SchemaFactory factory = 
+                    SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+            Schema schema = factory.newSchema(new File(xsdPath));
+            Validator validator = schema.newValidator();
+            validator.validate(new StreamSource(stream));
+        } catch (IOException e) {
+            System.out.println("Exception: "+e.getMessage());
+            return false;
+        } catch (SAXException e) {
+            System.out.println("Exception: "+e.getMessage());
+            return false;
+        }
+        return true;
     }
 	
 }
