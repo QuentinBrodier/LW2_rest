@@ -29,8 +29,8 @@ public class DAO_LW2 {
 	
 	public void insert(STB s){
 		s.setId(434);
-		STB stb = collection.findOne().orderBy("{id}").as(STB.class);
-		System.out.println("/#/#/#/#/#/#/#/#/# : " + stb.getId());
+		//STB stb = collection.findOne().orderBy("{id}").as(STB.class);
+		//System.out.println("/#/#/#/#/#/#/#/#/# : " + stb.getId());
 		collection.save(s);
 	}
 	
