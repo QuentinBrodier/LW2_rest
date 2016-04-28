@@ -85,7 +85,7 @@ public class STBController {
 			jaxbMarshaller.marshal(stb, sw);
 			
 			// On valide l'XML par rapport au XSD
-			File xsdFile = new File("src/main/ressources/stb.xsd");
+			File xsdFile = new File("src/main/ressources/stbe.xsd");
 			
 			System.out.println(xsdFile.toString());
 			
