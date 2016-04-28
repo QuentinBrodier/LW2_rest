@@ -10,18 +10,18 @@ import javax.xml.bind.annotation.XmlElement;
 public class Equipe {
 
 	@XmlElement
+    private boolean gender;
+	
+	@XmlElement
     private String nom;
 
     @XmlElement
     private String prenom;
 
-    @XmlElement
-    private boolean gender;
-    
-    public Equipe(String nom, String prenom, boolean gender){
+    public Equipe(boolean gender, String nom, String prenom){
+    	this.gender = gender;
     	this.nom = nom;
     	this.prenom = prenom;
-    	this.gender = gender;
     }
 
     public Equipe(){
