@@ -83,6 +83,8 @@ public class STBController {
 			jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 			jaxbMarshaller.marshal(stb, sw);
 			
+			System.out.println(sw.toString());
+			
 			// On valide l'XML par rapport au XSD
 			InputStream stream = new ByteArrayInputStream(sw.toString().getBytes(StandardCharsets.UTF_8));
 			validateXMLSchema("src/main/ressources/stb.xsd", stream);
