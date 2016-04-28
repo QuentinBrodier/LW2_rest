@@ -29,8 +29,8 @@ public class DAO_LW2 {
 	
 	public void insert(STB s){
 		s.setId(434);
-		MongoCursor<STB> stb = collection.find().sort("{id: 1}").limit(1).as(STB.class);
-		System.out.println("/#/#/#/#/#/#/#/#/# : " + stb.next().getId()+1);
+		STB stb = collection.findOne().orderBy("{id: 1}").as(STB.class);
+		System.out.println("/#/#/#/#/#/#/#/#/# : " + stb.getId());
 		collection.save(s);
 	}
 	
