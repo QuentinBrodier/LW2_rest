@@ -57,7 +57,8 @@ public class STB implements Serializable
     public STB(){
     	this.equipeList = new ArrayList<Equipe>();
     	this.fonctionnaliteList = new ArrayList<Fonctionnalite>();
-    	this.id = new DAO_LW2().nextId();
+    	System.out.println("#############-------------- : " + new DAO_LW2().nextId());
+    	this.id = 1234567;
     }
 
     //Setters and Getters
