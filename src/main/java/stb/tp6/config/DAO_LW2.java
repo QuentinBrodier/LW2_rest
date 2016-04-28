@@ -32,9 +32,10 @@ public class DAO_LW2 {
 	}
 	
 	public int nextId(){
-		/*STB stb = collection.findOne().orderBy("{id: 1}").as(STB.class);
-		return stb.getId()+1;*/
-		return 565;
+		MongoCursor<STB> stb = collection.find().sort("{id: 1}").limit(1).as(STB.class);
+		System.out.println("/#/#/#/#/#/#/#/#/# : " + stb.next().getId()+1);
+		return stb.next().getId()+1;
+		//return 565;
 	}
 	
 	public int countSTB(){
