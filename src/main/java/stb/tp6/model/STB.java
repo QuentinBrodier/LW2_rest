@@ -45,8 +45,6 @@ public class STB implements Serializable
     public STB(String titreProjet, String version, String date, String description,Client client,
     		List<Equipe> equipeList, List<Fonctionnalite> fonctionnaliteList) {
         super();
-        //this.id = new DAO_LW2().nextId();
-        this.id = 1234;
         this.titreProjet = titreProjet;
         this.version = version;
         this.date = date;
@@ -59,7 +57,7 @@ public class STB implements Serializable
     public STB(){
     	this.equipeList = new ArrayList<Equipe>();
     	this.fonctionnaliteList = new ArrayList<Fonctionnalite>();
-    	this.id = 12345;
+    	this.id = new DAO_LW2().nextId();
     }
 
     //Setters and Getters
