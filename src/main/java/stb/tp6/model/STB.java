@@ -59,6 +59,7 @@ public class STB implements Serializable
     	this.fonctionnaliteList = new ArrayList<Fonctionnalite>();
     }
 
+    
     //Setters and Getters
 	public int getId() {
 		return id;
