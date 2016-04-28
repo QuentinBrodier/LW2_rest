@@ -38,6 +38,7 @@ import javax.xml.validation.Validator;
 
 import stb.tp6.model.STB;
 import stb.tp6.model.STBList;
+import stb.tp6.config.DAO_LW2;
 import stb.tp6.model.Client;
 import stb.tp6.model.Equipe;
 import stb.tp6.model.ExigenceFonctionnelle;
@@ -99,14 +100,9 @@ public class STBController {
 			if(isValid){
 				
 				// Persistence dans la BD
-				String textUri = "mongodb://lw2user:lw2user@ds041484.mlab.com:41484/lw2projet";
-				MongoClientURI mongoClientURI = new MongoClientURI(textUri);
-				MongoClient mongoClient = new MongoClient(mongoClientURI);
-				Jongo jongo = new Jongo(mongoClient.getDB(mongoClientURI.getDatabase()));
-				MongoCollection collection = jongo.getCollection("lw2collection");
-				collection.save(stb);
-				mongoClient.close();
-				
+				DAO_LW2 db = new DAO_LW2();
+				db.insert(stb);
+				return new ResponseEntity<STB>(stb, HttpStatus.OK);
 				
 			}else{
 				System.out.println("XML Non Valide !!");
@@ -118,9 +114,7 @@ public class STBController {
 	    	e.printStackTrace();
 	    }
 		
-		stbList.getSTBs().add(stb);
-		ResponseEntity re = new ResponseEntity<STB>(stb, HttpStatus.OK);
-		return re;
+		return new ResponseEntity<STB>(HttpStatus.BAD_REQUEST);
 	}
 	
 	@RequestMapping(value = "/resume/{id}")
