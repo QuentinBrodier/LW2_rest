@@ -65,7 +65,7 @@ public class STBController {
 		}
     }
 	
-	@RequestMapping(value="/insert",method = RequestMethod.POST)
+	@RequestMapping(value="/depot",method = RequestMethod.POST)
 	@ResponseBody 
 	public ResponseEntity<STB> addSTB(@RequestBody STB stb) {
 		

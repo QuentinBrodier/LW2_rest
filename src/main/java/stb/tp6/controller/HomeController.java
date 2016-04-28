@@ -6,16 +6,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import stb.tp6.config.DAO_LW2;
+
 @Controller
 public class HomeController {
 
 	@RequestMapping(value="/")
 	@ResponseBody
 	public String home() {
-		return "<p>Après avoir déployé le WAR, voici les URL accessibles : </p>"
-				+ "<p>/resume : Obtenir la liste des STB</p>"
-				+ "<p>/resume/{version} : Retourne une STB à la date du jour avec la version en paramètre dans l'URL</p>"
-				+ "<p>/insert : Retourne une STB passée dans le Body de la requète HTTP POST !</p>";
+		DAO_LW2 db = new DAO_LW2();
+		int nbStbs = 0;
+		return "<p>Quentin Brodier & Matthieu Coulon :</p>"
+				+ "<p>/resume : Obtenir la liste des STB (versions allégées)</p>"
+				+ "<p>/resume/{id} : Retourne une STB correspond à l'id (version détaillée)</p>"
+				+ "<p>/depot : Insert une STB à l'aide de la requète HTTP POST !</p>"
+				+ "<p>Il y a actuellement "+nbStbs+" stockée(s)</p>";
 	}
 	
 }

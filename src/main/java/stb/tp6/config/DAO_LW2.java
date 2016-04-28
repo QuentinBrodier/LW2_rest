@@ -31,6 +31,10 @@ public class DAO_LW2 {
 		collection.save(o);
 	}
 	
+	public int countSTB(){
+		return (int) collection.count();
+	}
+	
 	public STB find(int id){
 		STB stb = collection.findOne("{id:"+id+"}").as(STB.class);
 		return stb;
