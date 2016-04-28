@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://univ.fr/stb" xmlns="http://univ.fr/stb">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
 	<xs:element name="stb" type="stbType"/>
 
@@ -33,7 +33,7 @@
 			<xs:element ref="date"/>
 			<xs:element ref="description"/>
 			<xs:element ref="client" minOccurs="1" maxOccurs="1"/>
-			<xs:element ref="equipe" minOccurs="1" maxOccurs="7"/>
+			<xs:element ref="equipe" minOccurs="2" maxOccurs="7"/>
 			<xs:element ref="fonctionnalite" minOccurs="1" maxOccurs="unbounded"/>
 			<xs:element ref="commentaire" minOccurs="0" maxOccurs="1"/>	
 		</xs:sequence>
@@ -61,7 +61,7 @@
 	<xs:complexType name="fonctionnaliteType">
 		<xs:sequence>
 			<xs:element ref="description"/>
-			<xs:element ref="ef" minOccurs="1" maxOccurs="unbounded"/>
+			<xs:element ref="ef" minOccurs="2" maxOccurs="unbounded"/>
 		</xs:sequence>
 		<xs:attribute name="priorite" type="prioriteType" use="required"/>
 	</xs:complexType>
