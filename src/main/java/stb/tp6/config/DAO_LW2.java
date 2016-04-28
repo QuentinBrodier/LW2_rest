@@ -18,11 +18,10 @@ public class DAO_LW2 {
 
 	private final String URI = "mongodb://lw2user:lw2user@ds041484.mlab.com:41484/lw2projet";
 	private MongoCollection collection;
-	private MongoClient mongoClient;
 	
 	public DAO_LW2(){
 		MongoClientURI mongoClientURI = new MongoClientURI(URI);
-		mongoClient = new MongoClient(mongoClientURI);
+		MongoClient mongoClient = new MongoClient(mongoClientURI);
 		Jongo jongo = new Jongo(mongoClient.getDB(mongoClientURI.getDatabase()));
 		collection = jongo.getCollection("lw2collection");
 	}
