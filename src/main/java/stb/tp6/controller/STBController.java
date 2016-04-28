@@ -121,12 +121,16 @@ public class STBController {
 	@ResponseBody
     public ResponseEntity<STB> getSTBByVersion (@PathVariable("id") int id) 
     {   
+		DAO_LW2 db = new DAO_LW2();
+		STB stb = db.find(id);
+		/*
 		for(STB stb : stbList.getSTBs()) {
             if (stb.getId() == id) {
             	return new ResponseEntity<STB>(stb, HttpStatus.OK);
             }
         }
-		return new ResponseEntity<STB>(HttpStatus.NOT_FOUND);
+        */
+		return new ResponseEntity<STB>(stb, HttpStatus.OK);
     }
 	
 	public static boolean validateXMLSchema(String xsdPath, InputStream stream){
