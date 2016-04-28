@@ -76,12 +76,15 @@ public class STBController {
 	}
 	
 	@RequestMapping(value = "/resume")
+	@ResponseBody 
     public ResponseEntity<STBList> getAllSTB() 
     {   
 		DAO_LW2 db = new DAO_LW2();
 		STBList stbs = db.findAll();
 		if(stbs != null){
 			return new ResponseEntity<STBList>(stbs, HttpStatus.OK);
+		}else{
+			return null;
 		}
     }
 	
