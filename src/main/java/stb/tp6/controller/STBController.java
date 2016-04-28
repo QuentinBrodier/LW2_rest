@@ -123,9 +123,10 @@ public class STBController {
     {   
 		DAO_LW2 db = new DAO_LW2();
 		STB stb = db.find(id);
-		if(stb == null){
+		if(stb != null){
 			return new ResponseEntity<STB>(stb, HttpStatus.OK);
 		}else{
+			System.out.println("TEST");
 			return new ResponseEntity<STB>(HttpStatus.NOT_FOUND);
 		}
 		
