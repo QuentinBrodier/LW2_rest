@@ -10,6 +10,8 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import stb.tp6.config.DAO_LW2;
+
 @XmlRootElement (name = "stb")
 @XmlAccessorType(XmlAccessType.NONE)
 public class STB implements Serializable 
@@ -43,7 +45,7 @@ public class STB implements Serializable
     public STB(String titreProjet, String version, String date, String description,Client client,
     		List<Equipe> equipeList, List<Fonctionnalite> fonctionnaliteList) {
         super();
-        this.id = STB_ID++;
+        this.id = new DAO_LW2().nextId();
         this.titreProjet = titreProjet;
         this.version = version;
         this.date = date;
@@ -56,7 +58,7 @@ public class STB implements Serializable
     public STB(){
     	this.equipeList = new ArrayList<Equipe>();
     	this.fonctionnaliteList = new ArrayList<Fonctionnalite>();
-    	this.id = STB_ID++;
+    	this.id = new DAO_LW2().nextId();
     }
 
     //Setters and Getters
