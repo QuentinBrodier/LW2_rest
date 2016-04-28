@@ -29,15 +29,11 @@ public class DAO_LW2 {
 	
 	public void insert(STB s){
 		s.setId(434);
+		MongoCursor<STB> stb = collection.find().sort("{id: 1}").limit(1).as(STB.class);
+		System.out.println("/#/#/#/#/#/#/#/#/# : " + stb.next().getId()+1);
 		collection.save(s);
 	}
 	
-	public int nextId(){
-		MongoCursor<STB> stb = collection.find().sort("{id: 1}").limit(1).as(STB.class);
-		System.out.println("/#/#/#/#/#/#/#/#/# : " + stb.next().getId()+1);
-		return stb.next().getId()+1;
-		//return 565;
-	}
 	
 	public int countSTB(){
 		return (int) collection.count();
