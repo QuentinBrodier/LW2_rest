@@ -39,6 +39,7 @@ import javax.xml.validation.Validator;
 import stb.tp6.model.STB;
 import stb.tp6.model.STBList;
 import stb.tp6.config.DAO_LW2;
+import stb.tp6.config.NotFoundException;
 import stb.tp6.model.Client;
 import stb.tp6.model.Equipe;
 import stb.tp6.model.ExigenceFonctionnelle;
@@ -119,17 +120,15 @@ public class STBController {
 	
 	@RequestMapping(value = "/resume/{id}")
 	@ResponseBody
-    public ResponseEntity<STB> getSTBByVersion (@PathVariable("id") int id) 
+    public ResponseEntity<STB> getSTBByVersion (@PathVariable("id") int id) throws NotFoundException
     {   
 		DAO_LW2 db = new DAO_LW2();
 		STB stb = db.find(id);
 		if(stb != null){
 			return new ResponseEntity<STB>(stb, HttpStatus.OK);
 		}else{
-			System.out.println("TEST");
-			return new ResponseEntity<STB>(HttpStatus.NOT_FOUND);
+			throw new NotFoundException("Id not found in the request");
 		}
-		
     }
 	
 	public static boolean validateXMLSchema(String xsdPath, InputStream stream){
