@@ -20,7 +20,7 @@ public class HomeController {
 				+ "<p>/resume : Obtenir la liste des STB (versions allégées)</p>"
 				+ "<p>/resume/{id} : Retourne une STB correspond à l'id (version détaillée)</p>"
 				+ "<p>/depot : Insert une STB à l'aide de la requète HTTP POST !</p>"
-				+ "<p>Il y a actuellement "+nbStbs+" stockée(s)</p>";
+				+ "<p>Il y a actuellement "+nbStbs+" STB stockée(s)</p>";
 	}
 	
 }

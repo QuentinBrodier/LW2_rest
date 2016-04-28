@@ -67,7 +67,7 @@ public class STBController {
 	
 	@RequestMapping(value="/depot",method = RequestMethod.POST)
 	@ResponseBody 
-	public ResponseEntity<STB> addSTB(@RequestBody STB stb) {
+	public int addSTB(@RequestBody STB stb) {
 		
 		try {
 			
@@ -87,7 +87,7 @@ public class STBController {
 				// Persistence dans la BD
 				DAO_LW2 db = new DAO_LW2();
 				db.insert(stb);
-				return new ResponseEntity<STB>(stb, HttpStatus.OK);
+				return stb.getId();
 				
 			}
 
@@ -97,7 +97,7 @@ public class STBController {
 	    	e.printStackTrace();
 	    }
 		
-		return new ResponseEntity<STB>(HttpStatus.BAD_REQUEST);
+		return -1;
 	}
 	
 	@RequestMapping(value = "/resume/{id}")
