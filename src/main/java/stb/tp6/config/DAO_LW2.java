@@ -32,8 +32,9 @@ public class DAO_LW2 {
 	}
 	
 	public int nextId(){
-		STB stb = collection.findOne().orderBy("{id: 1}").as(STB.class);
-		return stb.getId()+1;
+		/*STB stb = collection.findOne().orderBy("{id: 1}").as(STB.class);
+		return stb.getId()+1;*/
+		return 565;
 	}
 	
 	public int countSTB(){
