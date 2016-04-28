@@ -14,9 +14,9 @@
 	<xs:element name="contact" type="xs:string" default="BRODIER Quentin"/>
 	<xs:element name="codePostal" type="xs:int"/>
 	<xs:element name="equipe" type="equipeType"/>
+	<xs:element name="gender" type="xs:boolean" default="true"/>
 	<xs:element name="nom" type="xs:string"/>
 	<xs:element name="prenom" type="xs:string"/>
-	<xs:element name="gender" type="xs:boolean" default="true"/>
 	<xs:element name="fonctionnalite" type="fonctionnaliteType"/>
 	<xs:element name="ef" type="efType"/>
 	<xs:element name="identifiant" type="xs:int"/>
