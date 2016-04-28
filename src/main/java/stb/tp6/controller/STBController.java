@@ -68,7 +68,7 @@ public class STBController {
 	@RequestMapping(value="/depot",method = RequestMethod.POST)
 	@ResponseBody 
 	public int addSTB(@RequestBody STB stb) {
-		
+	
 		try {
 			
 			// On sérialise notre objet STB en XML
@@ -96,7 +96,6 @@ public class STBController {
 	    } catch (Exception e){
 	    	e.printStackTrace();
 	    }
-		
 		return -1;
 	}
 	
