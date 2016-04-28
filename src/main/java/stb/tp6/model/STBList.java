@@ -10,13 +10,13 @@ import javax.xml.bind.annotation.XmlElement;
 public class STBList implements Serializable 
 {    
 	@XmlElement(name="stb")
-    private ArrayList<STB> stbs = new ArrayList<STB>();
+    private ArrayList<STBLight> stbs = new ArrayList<STBLight>();
  
-    public ArrayList<STB> getSTBs() {
+    public ArrayList<STBLight> getSTBs() {
         return stbs;
     }
  
-    public void setEmployees(ArrayList<STB> stbs) {
+    public void setEmployees(ArrayList<STBLight> stbs) {
         this.stbs = stbs;
     }
 }

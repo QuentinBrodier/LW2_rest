@@ -30,9 +30,6 @@ public class STB implements Serializable
 	
 	@XmlElement
 	private String description;
-	
-    @XmlElement
-    private String email;
     
     @XmlElement
     private Client client;
@@ -101,14 +98,6 @@ public class STB implements Serializable
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
 	}
 
 	public Client getClient() {

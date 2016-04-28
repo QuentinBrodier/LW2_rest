@@ -1,5 +1,7 @@
 package stb.tp6.config;
 
+import java.io.IOException;
+
 import org.jongo.Jongo;
 import org.jongo.MongoCollection;
 import org.jongo.MongoCursor;
@@ -9,6 +11,7 @@ import com.mongodb.MongoClientURI;
 import com.mongodb.WriteResult;
 
 import stb.tp6.model.STB;
+import stb.tp6.model.STBLight;
 import stb.tp6.model.STBList;
 
 public class DAO_LW2 {
@@ -37,7 +40,9 @@ public class DAO_LW2 {
 		MongoCursor<STB> stbCursor = collection.find().as(STB.class);
 		STBList stbList = new STBList();
 		while (stbCursor.hasNext()) {
-		    stbList.getSTBs().add(stbCursor.next());
+			STB s = stbCursor.next();
+			STBLight stbLight = new STBLight(s.getId(),s.getTitreProjet(),s.getVersion(),s.getDate(),s.getDescription());
+		    stbList.getSTBs().add(stbLight);
 		}
 		return stbList;
 	}

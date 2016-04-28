@@ -52,29 +52,6 @@ public class STBController {
 
 	private STBList stbList = new STBList();
 	
-	public STBController(){
-		
-		Client c1 = new Client("Entité 1","Brodier Quentin",76100);
-	
-		Equipe e1 = new Equipe(true,"Jean","Jaques");
-		ArrayList<Equipe> alE = new ArrayList<Equipe>();
-		alE.add(e1);
-		
-		ArrayList<Fonctionnalite> alF = new ArrayList<Fonctionnalite>();
-		ArrayList<ExigenceFonctionnelle> alEF = new ArrayList<ExigenceFonctionnelle>();
-		ExigenceFonctionnelle ee1 = new ExigenceFonctionnelle(1, "Créer un sujet", 1);
-		ExigenceFonctionnelle ee2 = new ExigenceFonctionnelle(2, "Répondre à un sujet", 1);
-		alEF.add(ee1);
-		alEF.add(ee2);
-		Fonctionnalite f1 = new Fonctionnalite("Forum", 1, alEF);
-		alF.add(f1);
-        
-		stbList.getSTBs().add(new STB("STB 0.1 ","0.1","20/04/2016","La premiere version !!",c1,alE,alF));
-		stbList.getSTBs().add(new STB("STB 0.2 ","0.2","21/04/2016","La deuxième version !!",c1,alE,alF));
-		stbList.getSTBs().add(new STB("STB 1.0 ","1.0","21/04/2016","Version finale !!",c1,alE,alF));
-		
-	}
-	
 	@RequestMapping(value = "/resume")
 	@ResponseBody 
     public ResponseEntity<STBList> getAllSTB() 
