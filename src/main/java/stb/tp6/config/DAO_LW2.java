@@ -2,6 +2,7 @@ package stb.tp6.config;
 
 import org.jongo.Jongo;
 import org.jongo.MongoCollection;
+import org.jongo.MongoCursor;
 
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
@@ -25,15 +26,20 @@ public class DAO_LW2 {
 	
 	public void insert(Object o){
 		collection.save(o);
-		mongoClient.close();
 	}
 	
 	public STB find(int id){
 		STB stb = collection.findOne("{id:"+id+"}").as(STB.class);
-		mongoClient.close();
 		return stb;
 	}
 	
-	
+	public STBList findAll(){
+		MongoCursor<STB> stbCursor = collection.find().as(STB.class);
+		STBList stbList = new STBList();
+		while (stbCursor.hasNext()) {
+		    stbList.getSTBs().add(stbCursor.next());
+		}
+		return stbList;
+	}
 	
 }

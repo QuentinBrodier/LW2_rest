@@ -76,9 +76,13 @@ public class STBController {
 	}
 	
 	@RequestMapping(value = "/resume")
-    public STBList getAllSTB() 
+    public ResponseEntity<STBList> getAllSTB() 
     {   
-        return stbList;
+		DAO_LW2 db = new DAO_LW2();
+		STBList stbs = db.findAll();
+		if(stbs != null){
+			return new ResponseEntity<STBList>(stbs, HttpStatus.OK);
+		}
     }
 	
 	@RequestMapping(value="/insert",method = RequestMethod.POST)
@@ -105,8 +109,6 @@ public class STBController {
 				db.insert(stb);
 				return new ResponseEntity<STB>(stb, HttpStatus.OK);
 				
-			}else{
-				System.out.println("XML Non Valide !!");
 			}
 
 	    } catch (JAXBException e) {
