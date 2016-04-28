@@ -30,9 +30,7 @@ public class DAO_LW2 {
 	
 	public STB find(int id){
 		STB stb = collection.findOne("{id:"+id+"}").as(STB.class);
-		System.out.println(stb);
 		mongoClient.close();
-		System.out.println("On passe la");
 		return stb;
 	}
 	

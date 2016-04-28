@@ -123,14 +123,12 @@ public class STBController {
     {   
 		DAO_LW2 db = new DAO_LW2();
 		STB stb = db.find(id);
-		/*
-		for(STB stb : stbList.getSTBs()) {
-            if (stb.getId() == id) {
-            	return new ResponseEntity<STB>(stb, HttpStatus.OK);
-            }
-        }
-        */
-		return new ResponseEntity<STB>(stb, HttpStatus.OK);
+		if(stb == null){
+			return new ResponseEntity<STB>(stb, HttpStatus.OK);
+		}else{
+			return new ResponseEntity<STB>(HttpStatus.NOT_FOUND);
+		}
+		
     }
 	
 	public static boolean validateXMLSchema(String xsdPath, InputStream stream){
