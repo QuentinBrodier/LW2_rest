@@ -41,6 +41,9 @@ public class STB implements Serializable
     
     @XmlElement(name="fonctionnalite")
     private List<Fonctionnalite> fonctionnaliteList;
+    
+    @XmlElement
+	private String commentaire;
      
     public STB(String titreProjet, String version, String date, String description,Client client,
     		List<Equipe> equipeList, List<Fonctionnalite> fonctionnaliteList) {
@@ -125,6 +128,12 @@ public class STB implements Serializable
 		this.fonctionnaliteList = fonctionnaliteList;
 	}
 
+	public String getCommentaire(){
+		return commentaire;
+	}
 	
+	public void setCommentaire(String commentaire){
+		this.commentaire = commentaire;
+	}
 
 }
