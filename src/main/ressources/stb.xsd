@@ -7,7 +7,7 @@
 	<xs:element name="id" type="xs:int"/>
 	<xs:element name="titreProjet" type="xs:string"/>
 	<xs:element name="version" type="xs:string" default="0.1"/>
-	<xs:element name="date" type="xs:dateTime"/>
+	<xs:element name="date" type="xs:string"/>
 	<xs:element name="description" type="xs:string"/>
 	<xs:element name="client" type="clientType"/>
 	<xs:element name="entite" type="xs:string"/>
